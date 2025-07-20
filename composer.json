@@ -1,0 +1,78 @@
+{
+  "name": "nippytime/post-pin-flarum",
+  "description": "Pin a single post to the top of any discussion thread",
+  "keywords": [
+    "flarum",
+    "extension",
+    "pinned",
+    "posts",
+    "pin",
+    "forum"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nippytime",
+      "email": "feralnub@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/Nippytime/Post-Pin-Flarum/issues",
+    "source": "https://github.com/Nippytime/Post-Pin-Flarum",
+    "forum": "https://discuss.flarum.org/t/post-pin-extension"
+  },
+  "homepage": "https://github.com/Nippytime/Post-Pin-Flarum",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/Nippytime"
+    }
+  ],
+  "require": {
+    "flarum/core": "^1.8.0"
+  },
+  "require-dev": {
+    "flarum/testing": "*",
+    "flarum/phpstan": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nippytime\\PostPinFlarum\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nippytime\\PostPinFlarum\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Post Pin",
+      "category": "feature",
+      "icon": {
+        "name": "fas fa-thumbtack",
+        "backgroundColor": "#FF6600",
+        "color": "#1a1a1a"
+      }
+    },
+    "flarum-cli": {
+      "modules": {
+        "admin": true,
+        "forum": true,
+        "js": true,
+        "jsCommon": true,
+        "css": true
+      }
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "test": "phpunit",
+    "test:setup": "php tests/setup.php",
+    "analyse": "phpstan analyse",
+    "cs": "php-cs-fixer fix"
+  }
+}

@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  flarum:
+    image: crazymax/flarum:latest
+    container_name: flarum_test
+    ports:
+      - "8080:8000"
+    environment:
+      - FLARUM_BASE_URL=http://localhost:8080
+      - FLARUM_ADMIN_USER=admin
+      - FLARUM_ADMIN_PASS=password123
+      - FLARUM_ADMIN_MAIL=admin@example.com
+      - FLARUM_TITLE=Test Forum
+    volumes:
+      - flarum_data:/data
+      - ./extensions:/flarum/app/extensions
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: flarum_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=flarum
+      - MYSQL_USER=flarum
+      - MYSQL_PASSWORD=flarum123
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: flarum_phpmyadmin
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=rootpass
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+
+volumes:
+  flarum_data:
+  mysql_data:

@@ -1,0 +1,242 @@
+// Post Pin Styling - Black/Orange Theme
+
+:root {
+  --post-pin-primary-color: #FF6600;
+  --post-pin-secondary-color: #1a1a1a;
+  --post-pin-accent-color: #FF8C42;
+  --post-pin-dark-color: #0f0f0f;
+}
+
+.Post--pinned {
+  position: relative;
+  
+  // Add a bold orange border to distinguish pinned posts
+  border-left: 4px solid var(--post-pin-primary-color);
+  
+  // Add a subtle orange background tint
+  background-color: fade(var(--post-pin-primary-color), 5%);
+  
+  // Ensure the post stands out
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--post-pin-primary-color), var(--post-pin-accent-color), transparent);
+    z-index: 1;
+  }
+  
+  // Style the post avatar differently for pinned posts
+  .Post-avatar img {
+    border: 2px solid var(--post-pin-primary-color);
+    box-shadow: 0 0 0 2px fade(var(--post-pin-primary-color), 30%);
+  }
+  
+  // Add subtle glow effect
+  box-shadow: 0 2px 8px fade(var(--post-pin-primary-color), 15%);
+}
+
+.PinnedPost-indicator {
+  display: inline-flex;
+  align-items: center;
+  color: var(--post-pin-primary-color);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-right: 10px;
+  padding: 2px 6px;
+  background: fade(var(--post-pin-primary-color), 10%);
+  border-radius: 3px;
+  border: 1px solid fade(var(--post-pin-primary-color), 20%);
+  
+  i {
+    margin-right: 4px;
+    font-size: 11px;
+    animation: pin-rotate 3s ease-in-out infinite;
+  }
+  
+  // Add a subtle pulse animation
+  animation: pin-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pin-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes pin-rotate {
+  0%, 90%, 100% {
+    transform: rotate(0deg);
+  }
+  95% {
+    transform: rotate(15deg);
+  }
+}
+
+// Style for the pin/unpin buttons in post controls
+.PostControls {
+  .Button {
+    &[onclick*="pinPost"] {
+      color: var(--post-pin-primary-color);
+      font-weight: 600;
+      
+      &:hover {
+        background-color: fade(var(--post-pin-primary-color), 15%);
+        color: var(--post-pin-accent-color);
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+      }
+      
+      i {
+        color: var(--post-pin-primary-color);
+      }
+    }
+    
+    &[onclick*="unpinPost"] {
+      color: #e74c3c;
+      font-weight: 600;
+      
+      &:hover {
+        background-color: fade(#e74c3c, 15%);
+        color: #c0392b;
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+      }
+      
+      i {
+        color: #e74c3c;
+      }
+    }
+  }
+}
+
+// Enhanced visual hierarchy for pinned posts
+.Post--pinned {
+  .Post-header {
+    .PostUser {
+      .username {
+        color: var(--post-pin-primary-color);
+        font-weight: 600;
+      }
+    }
+  }
+  
+  .Post-body {
+    border-left: 2px solid fade(var(--post-pin-primary-color), 30%);
+    padding-left: 12px;
+    margin-left: 4px;
+  }
+}
+
+// Mobile responsiveness
+@media @phone {
+  .Post--pinned {
+    border-left-width: 3px;
+    
+    &:before {
+      height: 2px;
+    }
+  }
+  
+  .PinnedPost-indicator {
+    font-size: 10px;
+    padding: 1px 4px;
+    
+    i {
+      font-size: 9px;
+    }
+  }
+}
+
+// Dark mode specific enhancements
+.App--dark {
+  .Post--pinned {
+    background-color: fade(var(--post-pin-primary-color), 8%);
+    border-left-color: var(--post-pin-accent-color);
+    
+    &:before {
+      background: linear-gradient(90deg, var(--post-pin-accent-color), fade(var(--post-pin-primary-color), 50%), transparent);
+    }
+    
+    box-shadow: 0 2px 8px fade(var(--post-pin-dark-color), 40%);
+  }
+  
+  .PinnedPost-indicator {
+    color: var(--post-pin-accent-color);
+    background: fade(var(--post-pin-dark-color), 80%);
+    border-color: fade(var(--post-pin-accent-color), 30%);
+  }
+  
+  .Post--pinned .Post-header .PostUser .username {
+    color: var(--post-pin-accent-color);
+  }
+}
+
+// High contrast mode support  
+@media (prefers-contrast: high) {
+  .Post--pinned {
+    border-left-width: 6px;
+    background-color: fade(var(--post-pin-primary-color), 20%);
+    
+    &:before {
+      height: 4px;
+      background: var(--post-pin-primary-color);
+    }
+  }
+  
+  .PinnedPost-indicator {
+    font-weight: 800;
+    text-shadow: 0 0 1px currentColor;
+    background: fade(var(--post-pin-primary-color), 25%);
+    border-width: 2px;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .PinnedPost-indicator {
+    animation: none;
+    
+    i {
+      animation: none;
+    }
+  }
+  
+  .PostControls .Button {
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// Focus styles for accessibility
+.PostControls .Button {
+  &:focus {
+    outline: 2px solid var(--post-pin-primary-color);
+    outline-offset: 2px;
+  }
+}
+
+// Additional styling for better visual impact
+.Post--pinned {
+  // Add a subtle gradient background
+  background-image: linear-gradient(135deg, 
+    fade(var(--post-pin-primary-color), 2%) 0%, 
+    transparent 25%, 
+    fade(var(--post-pin-accent-color), 1%) 100%);
+  
+  // Enhanced hover effect
+  &:hover {
+    background-color: fade(var(--post-pin-primary-color), 8%);
+    transition: background-color 0.3s ease;
+  }
+}

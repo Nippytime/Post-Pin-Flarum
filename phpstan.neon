@@ -1,0 +1,13 @@
+includes:
+    - vendor/flarum/phpstan/extension.neon
+
+parameters:
+    level: 5
+    paths:
+        - src
+        - extend.php
+    excludePaths:
+        - tests/fixtures/*
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    reportUnmatchedIgnoredErrors: false

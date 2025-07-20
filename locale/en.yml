@@ -1,0 +1,58 @@
+nippytime-post-pin:
+  ##
+  # UNIQUE KEYS - The following keys are used in only one location each.
+  ##
+
+  # Admin panel
+  admin:
+    settings:
+      allow_self_pin_label: "Allow users to pin their own posts"
+      allow_self_pin_help: "When enabled, users can pin their own posts in discussions they participate in (subject to other permissions)."
+      allow_any_post_label: "Allow pinning any post"
+      allow_any_post_help: "When enabled, users can pin any post in a discussion (not just their own). When disabled, only moderators can pin other users' posts."
+    permissions:
+      pin_posts_label: "Pin posts to top of discussions"
+
+  # Forum interface
+  forum:
+    post_controls:
+      pin_button: "Pin Post"
+      unpin_button: "Unpin Post"
+      pin_confirmation: "Are you sure you want to pin this post to the top of the discussion?"
+      unpin_confirmation: "Are you sure you want to unpin this post?"
+
+    post:
+      pinned_indicator: "Pinned"
+
+    # Error messages
+    errors:
+      cannot_pin_post: "You do not have permission to pin posts in this discussion."
+      cannot_pin_hidden_post: "You cannot pin a hidden or deleted post."
+      post_not_in_discussion: "This post does not belong to the specified discussion."
+      no_pinned_post: "There is no pinned post to unpin in this discussion."
+      discussion_locked: "You cannot pin posts in a locked discussion."
+
+    # Success messages  
+    success:
+      post_pinned: "Post has been pinned to the top of the discussion."
+      post_unpinned: "Post has been unpinned from the discussion."
+
+  # Email notifications (for future use)
+  email:
+    post_pinned:
+      subject: "Your post was pinned in {discussion_title}"
+      body: |
+        Hey {recipient_display_name}!
+
+        {actor_display_name} pinned your post in the discussion "{discussion_title}".
+
+        View the discussion: {discussion_url}
+
+    post_unpinned:
+      subject: "Your post was unpinned in {discussion_title}" 
+      body: |
+        Hey {recipient_display_name}!
+
+        {actor_display_name} unpinned your post in the discussion "{discussion_title}".
+
+        View the discussion: {discussion_url}

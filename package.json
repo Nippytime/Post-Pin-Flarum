@@ -1,0 +1,40 @@
+{
+  "name": "post-pin-flarum",
+  "version": "1.0.0",
+  "description": "Pin a single post to the top of any discussion thread",
+  "main": "js/dist/forum.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "clean": "rm -rf js/dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nippytime/Post-Pin-Flarum.git"
+  },
+  "keywords": [
+    "flarum",
+    "extension",
+    "pinned",
+    "posts",
+    "forum",
+    "pin"
+  ],
+  "author": "Nippytime <feralnub@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nippytime/Post-Pin-Flarum/issues"
+  },
+  "homepage": "https://github.com/Nippytime/Post-Pin-Flarum#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "babel-loader": "^9.0.0",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  }
+}
