@@ -154,10 +154,6 @@ composer analyse
 
 See [CHANGELOG.md](CHANGELOG.md) for a full list of changes.
 
-## Security
-
-If you discover any security vulnerabilities, please send an email to [feralnub@gmail.com](mailto:feralnub@gmail.com) instead of using the issue tracker.
-
 ## License
 
 This extension is open source software licensed under the [MIT License](LICENSE).
